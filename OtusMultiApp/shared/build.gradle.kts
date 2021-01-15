@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("dev.icerock.mobile.multiplatform-network-generator")
 }
 
 kotlin {
@@ -45,6 +46,15 @@ android {
         minSdkVersion(24)
         targetSdkVersion(29)
     }
+}
+
+dependencies {
+    commonMainApi("dev.icerock.moko:network:0.8.0")
+}
+
+openApiGenerate {
+    inputSpec.set(file("src/apiSources/recipepuppy.yaml").path)
+    generatorName.set("kotlin-ktor-client")
 }
 
 val packForXcode by tasks.creating(Sync::class) {
