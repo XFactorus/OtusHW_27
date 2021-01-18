@@ -41,7 +41,7 @@ class RecipesPresenter(): RecipesPresenterInterface {
     override fun loadRecipes(dishName: String?, ingredients: String, page: Int, isNewSearch: Boolean) {
         scope.launch {
             val recipesList = recipeApi.getRecipe(i = ingredients, q = dishName, p = page)
-            if (recipesList?.results != null) {
+            if (recipesList.results != null) {
                 if (isNewSearch) {
                     recipes = arrayListOf()
                 }

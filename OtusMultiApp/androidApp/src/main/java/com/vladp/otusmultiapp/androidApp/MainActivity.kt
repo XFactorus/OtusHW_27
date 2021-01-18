@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), RecipesListViewInterface {
     override fun onResume() {
         super.onResume()
         presenter.attachView(this)
-        presenter.loadRecipes(dishName = "", ingredients = "carrot", 1)
+        presenter.loadRecipes(dishName = "", ingredients = "carrot", 1, isNewSearch = true)
     }
 
     override fun onPause() {
