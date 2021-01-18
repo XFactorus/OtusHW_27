@@ -31,6 +31,7 @@ struct RecipeCell: View {
                         EmptyView()
                     }
                 }
+                Spacer()
                 VStack(alignment: .leading) {
                     Text("Ingredients:")
                     Text(recipe.ingredients ?? "Undefined")
