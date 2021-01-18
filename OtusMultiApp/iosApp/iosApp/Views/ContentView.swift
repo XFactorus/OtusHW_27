@@ -6,8 +6,15 @@ func greet() -> String {
 }
 
 struct ContentView: View {
+    
+    @ObservedObject var rmListViewModel: RecipesViewModel = RecipesViewModel()
+    
     var body: some View {
         Text(greet())
+//            .onAppear {
+//                rmListViewModel.loadRecipesList()
+//            }
+        
     }
 }
 
