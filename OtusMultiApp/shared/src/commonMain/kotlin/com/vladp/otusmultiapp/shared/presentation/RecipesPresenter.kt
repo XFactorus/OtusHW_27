@@ -1,6 +1,5 @@
 package com.vladp.otusmultiapp.shared.presentation
 
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
@@ -39,10 +38,13 @@ class RecipesPresenter(): RecipesPresenterInterface {
         this.view = null
     }
 
-    override fun loadRecipes(dishName: String?, ingredients: String, page: Int) {
+    override fun loadRecipes(dishName: String?, ingredients: String, page: Int, isNewSearch: Boolean) {
         scope.launch {
             val recipesList = recipeApi.getRecipe(i = ingredients, q = dishName, p = page)
-            if (recipesList.results != null) {
+            if (recipesList?.results != null) {
+                if (isNewSearch) {
+                    recipes = arrayListOf()
+                }
                 recipes.addAll(recipesList.results)
                 withContext(uiDispatcher) {
                     view?.setupItems(recipes)

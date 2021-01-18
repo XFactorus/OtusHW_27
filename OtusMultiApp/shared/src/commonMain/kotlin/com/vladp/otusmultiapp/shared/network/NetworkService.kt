@@ -8,6 +8,8 @@ import com.vladp.otusmultiapp.shared.httpClientEngine
 import io.ktor.client.features.logging.LogLevel
 import io.ktor.client.features.logging.Logger
 import io.ktor.client.features.logging.Logging
+import io.ktor.client.request.*
+import io.ktor.http.*
 
 class NetworkService {
 
@@ -23,8 +25,14 @@ class NetworkService {
         }
 
         install(JsonFeature) {
+            accept(ContentType.Text.JavaScript)
             val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
             serializer = KotlinxSerializer(json)
         }
     }
+
+    suspend inline fun <reified T> loadData(url: String): T? {
+        return httpClient.get(url)
+    }
+
 }
