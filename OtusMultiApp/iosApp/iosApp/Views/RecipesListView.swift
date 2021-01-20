@@ -1,10 +1,6 @@
 import SwiftUI
 import shared
 
-func greet() -> String {
-    return Greeting().greeting()
-}
-
 struct RecipesListView: View {
     
     @ObservedObject var recipesViewModel: RecipesViewModel = RecipesViewModel()

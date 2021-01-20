@@ -2,8 +2,6 @@ package com.vladp.otusmultiapp.androidApp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.vladp.otusmultiapp.shared.Greeting
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vladp.otusmultiapp.shared.presentation.RecipesListViewInterface
